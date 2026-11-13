@@ -76,7 +76,7 @@ Jangan matikan *Auto-generate sitemap* di Webflow. File itu adalah sumber data s
 | `publicBaseUrl` | Alamat publik folder `docs/`, dipakai untuk `<loc>` di sitemap index. |
 | `defaultLocale`, `locales` | Bahasa default (tanpa prefix di URL) dan daftar prefix bahasa lain. |
 | `exclude` | Daftar regex. Dicocokkan ke path **tanpa prefix bahasa**, misalnya `thank-you-sales` atau `blogs/judul`. Contoh: `"^landing/"` membuang semua halaman landing. |
-| `splitBy` | `locale+type` (bahasa, lalu tipe konten di dalamnya; bawaan yang disarankan), `locale` (satu kelompok per bahasa), `type` (per tipe konten, semua bahasa digabung), atau `none` (satu kelompok). |
+| `splitBy` | `locale+type` (bahasa, lalu tipe konten di dalamnya; bawaan yang disarankan), `locale` (satu file per bahasa; bila `groups` diisi, URL di dalam file diurutkan per grup dan diberi komentar `<!-- knowledge -->`, dst.), `type` (per tipe konten, semua bahasa digabung), atau `none` (satu kelompok). |
 | `groups` | Array berurutan `{ "name": "knowledge", "pattern": "^knowledge(/|$)" }`; aturan pertama yang cocok menang. `pattern` dicocokkan ke path **tanpa prefix bahasa**. Dipakai bila `splitBy` = `type` atau `locale+type`. `name` harus unik, huruf kecil/angka/tanda hubung (dipakai di nama file), dan tidak boleh sama dengan `defaultGroup`. |
 | `defaultGroup` | Nama grup untuk URL yang tidak cocok dengan aturan mana pun (bawaan `pages`). Selalu di urutan terakhir. |
 | `pageSize` | Jumlah URL maksimum per file, berlaku di semua mode `splitBy`. Bilangan bulat positif; efektifnya `min(pageSize, 45000)`. Tanpa `pageSize`, batas 45.000 dipakai. |
@@ -113,6 +113,16 @@ Urutan di index: bahasa sesuai config (default dulu, lalu `locales`), lalu grup 
 **Kenapa index datar?** Protokol sitemap melarang sitemap index menunjuk sitemap index lain, jadi tidak bisa dibuat index per bahasa yang berisi file per tipe. Semua file didaftar langsung di satu `sitemap-index.xml` (batas index 50.000 file, jauh di atas kebutuhan).
 
 Mode lama (`locale`, `type`, `none`) tetap memakai penamaan lama: `sitemap-<kelompok>.xml`, dan baru diberi nomor `-1`, `-2` bila kelompok itu lebih dari satu halaman.
+
+### Alternatif: satu file per bahasa (`splitBy: "locale"`)
+
+```
+docs/sitemap-index.xml        ← daftar sitemap-en.xml, sitemap-nl.xml, ...
+docs/sitemap-en.xml           ← <!-- knowledge --> ... <!-- blogs --> ... <!-- pages -->
+docs/sitemap-nl.xml
+```
+
+Pengelompokan ada **di dalam** tiap file, lewat urutan URL dan komentar XML. Tidak bisa dibuat `sitemap-en.xml` yang berisi daftar sitemap lain, karena itu sitemap index bersarang yang tidak diizinkan protokol. Tanpa `pageSize`, satu file memuat hingga 45.000 URL; bila lewat, otomatis jadi `sitemap-en-1.xml`, `-2.xml`, dst.
 
 ### Urutan URL dan pergeseran halaman
 

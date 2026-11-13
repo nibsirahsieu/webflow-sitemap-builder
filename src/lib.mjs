@@ -113,7 +113,7 @@ export function normalizeConfig(cfg) {
     pageSize,
     defaultGroup,
     groups,
-    usesGroups: splitBy === 'type' || splitBy === 'locale+type',
+    usesGroups: splitBy === 'type' || splitBy === 'locale+type' || (splitBy === 'locale' && groups.length > 0),
   };
 }
 
@@ -126,6 +126,12 @@ export function processSitemap(sourceUrls, cfg) {
   const excludeRes = (cfg.exclude || []).map((p) => new RegExp(p));
   const prioRules = (cfg.priorityRules || []).map((r) => ({ ...r, re: new RegExp(r.pattern) }));
   const matched = new Set();
+  // Mode locale + groups: satu file per bahasa, URL diurutkan per grup dan diberi komentar pemisah.
+  const groupedInLocale = norm.splitBy === 'locale' && norm.groups.length > 0;
+  const groupRank = (name) => {
+    const i = norm.groups.findIndex((g) => g.name === name);
+    return i === -1 ? norm.groups.length : i;
+  };
   const groupOf = (path) => {
     const hit = norm.groups.find((g) => g.re.test(path));
     if (hit) matched.add(hit.name);
@@ -167,12 +173,16 @@ export function processSitemap(sourceUrls, cfg) {
       }),
       path,
     };
+    if (groupedInLocale) {
+      out.group = groupOf(path);
+      out.gi = groupRank(out.group);
+    }
     if (!groups.has(g)) groups.set(g, []);
     groups.get(g).push(out);
   }
   // Urutan deterministik: path (tanpa prefix bahasa) menaik, lalu loc sebagai pemutus seri.
-  for (const list of groups.values()) list.sort((a, b) => cmp(a.path, b.path) || cmp(a.loc, b.loc));
-  for (const list of groups.values()) for (const u of list) delete u.path;
+  for (const list of groups.values()) list.sort((a, b) => (a.gi ?? 0) - (b.gi ?? 0) || cmp(a.path, b.path) || cmp(a.loc, b.loc));
+  for (const list of groups.values()) for (const u of list) { delete u.path; delete u.gi; }
 
   const warnings = [];
   if (norm.usesGroups) {
@@ -194,10 +204,17 @@ export function renderUrl(u) {
 }
 
 export function renderUrlset(urls) {
+  // Komentar pemisah grup hanya muncul bila URL membawa properti group (mode locale + groups).
+  let last;
+  const body = urls.map((u) => {
+    const head = u.group && u.group !== last ? `  <!-- ${u.group} -->\n` : '';
+    last = u.group;
+    return head + renderUrl(u);
+  });
   return (
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
     `<urlset xmlns="${NS_SITEMAP}" xmlns:xhtml="${NS_XHTML}">\n` +
-    urls.map(renderUrl).join('\n') +
+    body.join('\n') +
     `\n</urlset>\n`
   );
 }

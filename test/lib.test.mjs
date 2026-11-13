@@ -237,3 +237,16 @@ test('parseEnv membaca KEY=VALUE, kutip, komentar, export', () => {
   const e = parseEnv('# komentar\nSOURCE_URL=https://a.test/sitemap.xml # catatan\nexport B="x y"\nC=\'z\'\n\nbaris rusak\n');
   assert.deepEqual(e, { SOURCE_URL: 'https://a.test/sitemap.xml', B: 'x y', C: 'z' });
 });
+
+test('locale + groups: satu file per bahasa, URL berurutan per grup dengan komentar', () => {
+  const c = { ...cfg2, splitBy: 'locale', pageSize: undefined };
+  const urls = [...many('de', 'blogs', 2), ...many('de', 'misc', 2), ...many('de', 'knowledge', 3)];
+  const { groups, warnings } = processSitemap(urls, c);
+  const files = buildFiles(groups, c);
+  assert.deepEqual(files.map((f) => f.name), ['sitemap-de.xml']);
+  assert.equal(files[0].count, 7);
+  const order = [...files[0].xml.matchAll(/<!-- (\S+) -->|<loc>.*?\/([a-z]+)\/item/g)].map((m) => m[1] ?? m[2]);
+  assert.deepEqual(order.filter((x, i) => i === 0 || x !== order[i - 1]).filter((x) => ['knowledge', 'blogs', 'pages'].includes(x)).slice(0, 3), ['knowledge', 'blogs', 'pages']);
+  assert.equal((files[0].xml.match(/<!-- /g) || []).length, 3);
+  assert.equal(warnings.length, 0);
+});
