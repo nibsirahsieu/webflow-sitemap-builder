@@ -26,13 +26,13 @@ Bawaan config saat ini (**contoh, sesuaikan dengan kebutuhan situs Anda**): buan
 ## Setup
 
 ### 1. Buat repositori GitHub
-Buat repositori baru (misalnya `webflow-sitemap`) lalu unggah isi folder ini. Gunakan repositori **publik** bila memakai GitHub Pages gratis. Isinya hanya script dan sitemap yang memang publik.
+Buat repositori baru (misalnya `webflow-sitemap-builder`) lalu unggah isi folder ini. Gunakan repositori **publik** bila memakai GitHub Pages gratis. Isinya hanya script dan sitemap yang memang publik.
 
 ### 2. Isi `config/rules.json`
 Ganti `sourceUrl` dengan sitemap Webflow Anda (`https://DOMAIN-ANDA/sitemap.xml`), dan `publicBaseUrl` dengan alamat Pages Anda, tanpa garis miring di akhir:
 
 ```json
-"publicBaseUrl": "https://NAMA-USER.github.io/webflow-sitemap"
+"publicBaseUrl": "https://nibsirahsieu.github.io/webflow-sitemap-builder"
 ```
 
 Selama masih berisi `YOUR-`, script menolak berjalan agar tidak menerbitkan index dengan alamat salah.
@@ -41,7 +41,7 @@ Selama masih berisi `YOUR-`, script menolak berjalan agar tidak menerbitkan inde
 Settings → Pages → *Build and deployment* → Source: **Deploy from a branch** → Branch: `main`, folder `/docs`.
 
 ### 4. Jalankan workflow pertama kali
-Tab **Actions** → *Build sitemap* → **Run workflow**. Setelah selesai, buka `https://NAMA-USER.github.io/webflow-sitemap/sitemap-index.xml` dan pastikan terbaca.
+Tab **Actions** → *Build sitemap* → **Run workflow**. Setelah selesai, buka `https://nibsirahsieu.github.io/webflow-sitemap-builder/sitemap-index.xml` dan pastikan terbaca.
 
 Jika workflow gagal saat push, periksa Settings → Actions → General → *Workflow permissions* dan pilih **Read and write permissions**.
 
@@ -55,7 +55,7 @@ Site settings → SEO → Indexing:
 User-agent: *
 Allow: /
 
-Sitemap: https://NAMA-USER.github.io/webflow-sitemap/sitemap-index.xml
+Sitemap: https://nibsirahsieu.github.io/webflow-sitemap-builder/sitemap-index.xml
 ```
 
 3. Hapus tujuh baris `Sitemap:` per bahasa (`/en-us/sitemap.xml`, dst.) karena semuanya 404.
