@@ -1,0 +1,20 @@
+{
+  "sourceUrl": "https://YOUR-DOMAIN.com/sitemap.xml",
+  "publicBaseUrl": "https://YOUR-GITHUB-USERNAME.github.io/webflow-sitemap",
+  "defaultLocale": "en",
+  "locales": ["nl", "en-us", "en-gb", "de", "es", "fr", "pt"],
+  "exclude": ["^thank-you", "^dev/"],
+  "splitBy": "locale+type",
+  "pageSize": 100,
+  "groups": [
+    { "name": "knowledge", "pattern": "^knowledge(/|$)" },
+    { "name": "blogs", "pattern": "^blogs(/|$)" },
+    { "name": "instructions-manuals", "pattern": "^instructions-manuals(/|$)" },
+    { "name": "products", "pattern": "^(products|cold-therapy|heat-therapy|accessories)(/|$)" }
+  ],
+  "defaultGroup": "pages",
+  "lastmod": "keep",
+  "priorityRules": [],
+  "extraUrls": [],
+  "maxDropPercent": 30
+}

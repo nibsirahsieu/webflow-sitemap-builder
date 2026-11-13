@@ -1,0 +1,14 @@
+{
+  "name": "webflow-sitemap-builder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Transformasi sitemap otomatis Webflow sesuai aturan SEO (pengelompokan, pagination, exclude)",
+  "type": "module",
+  "scripts": {
+    "build": "node src/build-sitemap.mjs",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
