@@ -1,6 +1,6 @@
 {
   "sourceUrl": "https://YOUR-DOMAIN.com/sitemap.xml",
-  "publicBaseUrl": "https://YOUR-GITHUB-USERNAME.github.io/webflow-sitemap",
+  "publicBaseUrl": "https://nibsirahsieu.github.io/webflow-sitemap-builder",
   "defaultLocale": "en",
   "locales": ["nl", "en-us", "en-gb", "de", "es", "fr", "pt"],
   "exclude": ["^thank-you", "^dev/"],
