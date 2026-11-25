@@ -1,60 +1,60 @@
 {
-  "sourceUrls": 3055,
+  "sourceUrls": 3223,
   "excludedUrls": 216,
-  "outputUrls": 2839,
+  "outputUrls": 3007,
   "files": {
     "sitemap-en-knowledge-1.xml": 100,
     "sitemap-en-knowledge-2.xml": 100,
-    "sitemap-en-knowledge-3.xml": 7,
+    "sitemap-en-knowledge-3.xml": 28,
     "sitemap-en-blogs-1.xml": 93,
     "sitemap-en-instructions-manuals-1.xml": 6,
     "sitemap-en-products-1.xml": 18,
     "sitemap-en-pages-1.xml": 31,
     "sitemap-nl-knowledge-1.xml": 100,
     "sitemap-nl-knowledge-2.xml": 100,
-    "sitemap-nl-knowledge-3.xml": 7,
+    "sitemap-nl-knowledge-3.xml": 28,
     "sitemap-nl-blogs-1.xml": 95,
     "sitemap-nl-instructions-manuals-1.xml": 6,
     "sitemap-nl-products-1.xml": 18,
     "sitemap-nl-pages-1.xml": 31,
     "sitemap-en-us-knowledge-1.xml": 100,
     "sitemap-en-us-knowledge-2.xml": 100,
-    "sitemap-en-us-knowledge-3.xml": 7,
+    "sitemap-en-us-knowledge-3.xml": 28,
     "sitemap-en-us-blogs-1.xml": 94,
     "sitemap-en-us-instructions-manuals-1.xml": 6,
     "sitemap-en-us-products-1.xml": 18,
     "sitemap-en-us-pages-1.xml": 31,
     "sitemap-en-gb-knowledge-1.xml": 100,
     "sitemap-en-gb-knowledge-2.xml": 100,
-    "sitemap-en-gb-knowledge-3.xml": 7,
+    "sitemap-en-gb-knowledge-3.xml": 28,
     "sitemap-en-gb-blogs-1.xml": 80,
     "sitemap-en-gb-instructions-manuals-1.xml": 6,
     "sitemap-en-gb-products-1.xml": 18,
     "sitemap-en-gb-pages-1.xml": 31,
     "sitemap-de-knowledge-1.xml": 100,
     "sitemap-de-knowledge-2.xml": 100,
-    "sitemap-de-knowledge-3.xml": 7,
+    "sitemap-de-knowledge-3.xml": 28,
     "sitemap-de-blogs-1.xml": 96,
     "sitemap-de-instructions-manuals-1.xml": 6,
     "sitemap-de-products-1.xml": 18,
     "sitemap-de-pages-1.xml": 31,
     "sitemap-es-knowledge-1.xml": 100,
     "sitemap-es-knowledge-2.xml": 100,
-    "sitemap-es-knowledge-3.xml": 7,
+    "sitemap-es-knowledge-3.xml": 28,
     "sitemap-es-blogs-1.xml": 95,
     "sitemap-es-instructions-manuals-1.xml": 6,
     "sitemap-es-products-1.xml": 18,
     "sitemap-es-pages-1.xml": 31,
     "sitemap-fr-knowledge-1.xml": 100,
     "sitemap-fr-knowledge-2.xml": 100,
-    "sitemap-fr-knowledge-3.xml": 7,
+    "sitemap-fr-knowledge-3.xml": 28,
     "sitemap-fr-blogs-1.xml": 95,
     "sitemap-fr-instructions-manuals-1.xml": 6,
     "sitemap-fr-products-1.xml": 18,
     "sitemap-fr-pages-1.xml": 31,
     "sitemap-pt-knowledge-1.xml": 100,
     "sitemap-pt-knowledge-2.xml": 100,
-    "sitemap-pt-knowledge-3.xml": 7,
+    "sitemap-pt-knowledge-3.xml": 28,
     "sitemap-pt-blogs-1.xml": 95,
     "sitemap-pt-instructions-manuals-1.xml": 6,
     "sitemap-pt-products-1.xml": 18,
@@ -62,7 +62,7 @@
   },
   "groups": {
     "en/knowledge": {
-      "urls": 207,
+      "urls": 228,
       "files": 3
     },
     "en/blogs": {
@@ -82,7 +82,7 @@
       "files": 1
     },
     "nl/knowledge": {
-      "urls": 207,
+      "urls": 228,
       "files": 3
     },
     "nl/blogs": {
@@ -102,7 +102,7 @@
       "files": 1
     },
     "en-us/knowledge": {
-      "urls": 207,
+      "urls": 228,
       "files": 3
     },
     "en-us/blogs": {
@@ -122,7 +122,7 @@
       "files": 1
     },
     "en-gb/knowledge": {
-      "urls": 207,
+      "urls": 228,
       "files": 3
     },
     "en-gb/blogs": {
@@ -142,7 +142,7 @@
       "files": 1
     },
     "de/knowledge": {
-      "urls": 207,
+      "urls": 228,
       "files": 3
     },
     "de/blogs": {
@@ -162,7 +162,7 @@
       "files": 1
     },
     "es/knowledge": {
-      "urls": 207,
+      "urls": 228,
       "files": 3
     },
     "es/blogs": {
@@ -182,7 +182,7 @@
       "files": 1
     },
     "fr/knowledge": {
-      "urls": 207,
+      "urls": 228,
       "files": 3
     },
     "fr/blogs": {
@@ -202,7 +202,7 @@
       "files": 1
     },
     "pt/knowledge": {
-      "urls": 207,
+      "urls": 228,
       "files": 3
     },
     "pt/blogs": {
